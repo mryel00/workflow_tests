@@ -1,3 +1,12 @@
+## v0.5.0 (2025-03-18)
+
+### Fix
+
+- fix version
+- fix workflow
+- testing
+- test
+
 ## v0.4.1 (2025-03-18)
 
 ### Fix

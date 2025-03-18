@@ -1,3 +1,9 @@
+## v0.6.4 (2025-03-18)
+
+### Fix
+
+- test merge without token
+
 ## v0.6.3 (2025-03-18)
 
 ### Fix

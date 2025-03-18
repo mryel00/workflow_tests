@@ -21,7 +21,6 @@ jobs:
       uses: commitizen-tools/commitizen-action@master
       id: bump
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
         changelog_increment_filename: release_body.md
 
     - name: Merge Fast Forward
@@ -29,3 +28,5 @@ jobs:
       with:
         branchtomerge: develop
         branch: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

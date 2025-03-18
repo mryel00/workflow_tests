@@ -1,3 +1,16 @@
+## v0.4.0 (2025-03-18)
+
+### Feat
+
+- update workflow
+
+### Fix
+
+- fix typo
+- fix branch to merge to
+- fix version for commitizen
+- fix name
+
 ## v0.3.1 (2025-03-18)
 
 ### Fix

@@ -1,3 +1,10 @@
+## v0.6.5 (2025-03-18)
+
+### Fix
+
+- fix everything
+- test commitizen without token
+
 ## v0.6.4 (2025-03-18)
 
 ### Fix

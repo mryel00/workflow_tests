@@ -1,3 +1,11 @@
+## v0.6.2 (2025-03-18)
+
+### Fix
+
+- test PAT
+- add back in tokens
+- remove tokens
+
 ## v0.6.1 (2025-03-18)
 
 ### Fix

@@ -1,3 +1,12 @@
+## v0.6.1 (2025-03-18)
+
+### Fix
+
+- PAT checkout
+- test
+- test
+- test fix
+
 ## v0.6.0 (2025-03-18)
 
 ### Feat

@@ -58,6 +58,6 @@ jobs:
         # Branch to merge
         branchtomerge: develop
         # Branch that will be updated
-        branch: main
+        branch: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

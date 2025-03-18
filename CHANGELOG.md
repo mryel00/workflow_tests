@@ -1,3 +1,16 @@
+## v0.6.0 (2025-03-18)
+
+### Feat
+
+- remove permissions
+
+### Fix
+
+- add PAT
+- remove test
+- test fix
+- fix permissions
+
 ## v0.5.6 (2025-03-18)
 
 ### Fix

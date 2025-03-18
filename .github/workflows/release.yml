@@ -13,10 +13,9 @@ jobs:
     name: "Bump version, create changelog and release"
 
     steps:
-    - name: Check out
+    - name: Checkout
       uses: actions/checkout@v3
       with:
-        token: "${{ secrets.GITHUB_TOKEN }}"
         fetch-depth: 0
         ref: 'develop'
 
@@ -30,9 +29,7 @@ jobs:
     - name: Merge Fast Forward
       uses: MaximeHeckel/github-action-merge-fast-forward@v1.1.0
       with:
-        # Branch to merge
         branchtomerge: develop
-        # Branch that will be updated
         branch: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,3 +1,11 @@
+## v0.4.3 (2025-03-18)
+
+### Fix
+
+- fix workflow permissions
+- testing
+- test
+
 ## v0.4.2 (2025-03-18)
 
 ### Fix

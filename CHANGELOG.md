@@ -1,3 +1,15 @@
+## v0.6.3 (2025-03-18)
+
+### Fix
+
+- test
+- fix
+- test
+- test
+- remove commitizen
+- remove PAT checkout
+- revert to GITHBU_TOKEN
+
 ## v0.6.2 (2025-03-18)
 
 ### Fix

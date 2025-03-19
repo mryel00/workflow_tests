@@ -2,6 +2,10 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "y" to confirm merging develop into master'
+        required: true
 permissions:
   contents: write
 

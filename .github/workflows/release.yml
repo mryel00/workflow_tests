@@ -64,6 +64,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         body_path: release_body.md
-        tag_name: tag_name: ${{ needs.push_to_master.outputs.revision }}
+        tag_name: ${{ needs.push_to_master.outputs.revision }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

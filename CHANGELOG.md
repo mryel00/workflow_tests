@@ -1,3 +1,11 @@
+## v0.8.2 (2025-03-19)
+
+### Fix
+
+- typo
+- add confirm
+- fix version
+
 ## v0.8.1 (2025-03-19)
 
 ### Fix

@@ -27,7 +27,7 @@ jobs:
     - name: Merge Fast Forward
       uses: MaximeHeckel/github-action-merge-fast-forward@v1.1.0
       with:
-        branchtomerge: develop
+        branchtomerge: origin/develop
         branch: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

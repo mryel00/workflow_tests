@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  succeed:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Succeed
+      run: echo "Succeed"
+  skip:
+    runs-on: ubuntu-latest
+    if: ${{ cancelled() }}
+    steps:
+    - name: Skip
+      run: echo "Skip"
+  succeed_or_skip:
+    runs-on: ubuntu-latest
+    if: ${{ success() }}
+    steps:
+    - name: Succeed or Skip
+      run: echo "Succeed or Skip"
+  

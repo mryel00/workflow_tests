@@ -11,10 +11,9 @@ jobs:
       run: echo "Succeed"
   fail:
     runs-on: ubuntu-latest
-    if: ${{ failure() }}
     steps:
     - name: Skip
-      run: echo "Skip"
+      run: exit 1
   not_failed:
     runs-on: ubuntu-latest
     if: ${{ failure() }}

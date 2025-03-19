@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "fast-forward develop to main"
     outputs:
-      revision: ${{ steps.bump.outputs.new_version }}
+      version: ${{ steps.bump.outputs.version }}
 
     steps:
     - name: Checkout
@@ -64,6 +64,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         body_path: release_body.md
-        tag_name: ${{ needs.push_to_master.outputs.revision }}
+        tag_name: ${{ needs.push_to_master.outputs.version }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

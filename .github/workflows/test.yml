@@ -9,9 +9,15 @@ jobs:
     steps:
     - name: Succeed
       run: echo "Succeed"
-  skip:
+  fail:
     runs-on: ubuntu-latest
-    if: ${{ cancelled() }}
+    if: ${{ failure() }}
+    steps:
+    - name: Skip
+      run: echo "Skip"
+  not_failed:
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
     steps:
     - name: Skip
       run: echo "Skip"

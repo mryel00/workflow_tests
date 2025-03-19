@@ -1,3 +1,10 @@
+## v0.8.1 (2025-03-19)
+
+### Fix
+
+- artifact up/download
+- permissions
+
 ## v0.8.0 (2025-03-19)
 
 ### Feat

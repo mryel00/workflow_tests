@@ -1,3 +1,9 @@
+## v0.8.0 (2025-03-19)
+
+### Feat
+
+- update release workflow
+
 ## v0.7.0 (2025-03-19)
 
 ### Feat

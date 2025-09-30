@@ -90,7 +90,8 @@ jobs:
                 libffi-dev \
                 libssl-dev \
                 ruby-full \
-                curl
+                curl \
+                wget
 
               # Install fpm (for Debian packaging)
               gem install --no-document fpm

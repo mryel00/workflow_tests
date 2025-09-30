@@ -4,7 +4,7 @@
 VERSION="${1}"
 PKGNAME="spyglass"
 
-DEPENDS=(python3-libcamera python3-kms++ python3-picamera2)
+DEPENDS=(python3-libcamera python3-kms++ python3-picamera2 python3-av)
 
 TMP_VENV="/opt/${PKGNAME}/venv"
 STAGING_DIR="$(mktemp -d /tmp/${PKGNAME}-pkg.XXXXXX)"

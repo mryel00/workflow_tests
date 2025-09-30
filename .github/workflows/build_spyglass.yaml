@@ -99,7 +99,7 @@ jobs:
         with:
           name: ${{ matrix.arch }}-${{ matrix.distro }}-deb
           path: |
-            *-${{ matrix.arch }}-${{ matrix.distro }}.deb
+            *.deb
 
       - name: List produced files (for debugging)
         if: always()

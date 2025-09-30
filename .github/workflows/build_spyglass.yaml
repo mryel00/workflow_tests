@@ -72,21 +72,14 @@ jobs:
               export DEBIAN_FRONTEND=noninteractive
               apt-get update
               apt-get install -y --no-install-recommends \
-                ca-certificates \
                 git \
                 python3 \
                 python3-venv \
                 python3-pip \
                 python3-av \
-                python3-dev \
-                build-essential \
-                gcc \
-                libffi-dev \
-                libssl-dev \
                 ruby-full \
                 curl \
-                wget \
-                libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config
+                wget
 
               # Install fpm (for Debian packaging)
               gem install --no-document fpm

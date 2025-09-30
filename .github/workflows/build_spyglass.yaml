@@ -2,13 +2,6 @@ name: Build .deb (multi-arch Debian using repo script)
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: "Package version (e.g. 1.2.3). If empty a synthetic version will be used."
-        required: false
-      external_repo:
-        description: "Git URL of external repository to install into the venv (e.g. https://github.com/owner/repo.git)"
-        required: true
   push:
     branches:
       - main

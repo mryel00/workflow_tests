@@ -15,7 +15,11 @@ EXTERNAL_REPO="https://github.com/mryel00/spyglass"
 echo "Creating virtualenv in ${TMP_VENV}"
 python3 -m venv --system-site-packages "${TMP_VENV}"
 
-"${TMP_VENV}/bin/pip" install --upgrade pip
+"${TMP_VENV}/bin/pip" install --upgrade pip setuptools wheel
+"${TMP_VENV}/bin/pip" config set global.prefer-binary true
+"${TMP_VENV}/bin/pip" debug --verbose || true
+"${TMP_VENV}/bin/pip" download --no-deps --dest /tmp/wheels aiortc==1.9.0 || true
+ls -la /tmp/wheels || true
 
 echo "Download external repository whl from : ${EXTERNAL_REPO}"
 # wget $(curl -s https://api.github.com/repos/mryel00/spyglass/releases/latest | grep browser_download_url | cut -d\" -f4  | egrep '.whl$')

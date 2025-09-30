@@ -16,16 +16,13 @@ echo "Creating virtualenv in ${TMP_VENV}"
 python3 -m venv --system-site-packages "${TMP_VENV}"
 
 "${TMP_VENV}/bin/pip" install --upgrade pip setuptools wheel
-"${TMP_VENV}/bin/pip" config set global.prefer-binary true
-"${TMP_VENV}/bin/pip" debug --verbose || true
-"${TMP_VENV}/bin/pip" download --no-deps --dest /tmp/wheels aiortc==1.9.0 || true
-ls -la /tmp/wheels || true
+"${TMP_VENV}/bin/pip" config list
 
 echo "Download external repository whl from : ${EXTERNAL_REPO}"
 # wget $(curl -s https://api.github.com/repos/mryel00/spyglass/releases/latest | grep browser_download_url | cut -d\" -f4  | egrep '.whl$')
 wget "https://docs.google.com/uc?export=download&id=1-DkfAw-FMElFUv-cXV1SrDQZ1_dTyq0f" -O spyglass-0.17.0-py3-none-any.whl
 echo "Installing whl into venv"
-"${TMP_VENV}/bin/pip" install --no-cache-dir *.whl
+"${TMP_VENV}/bin/pip" install --no-cache-dir --extra-index-url https://www.piwheels.org/simple *.whl
 
 echo "Cleaning up virtualenv to reduce size"
 "${TMP_VENV}/bin/pip" cache purge

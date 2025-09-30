@@ -77,6 +77,7 @@ jobs:
                 python3-venv \
                 python3-pip \
                 python3-av \
+                python3-dev \
                 build-essential \
                 gcc \
                 ruby-full \

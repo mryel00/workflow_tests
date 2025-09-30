@@ -77,7 +77,7 @@ jobs:
                 python3-venv \
                 python3-pip \
                 python3-av \
-                binutils \
+                build-essential \
                 ruby-full \
                 curl \
                 wget

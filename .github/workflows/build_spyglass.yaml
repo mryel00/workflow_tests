@@ -69,7 +69,7 @@ jobs:
           echo "External repository: ${EXTERNAL_REPO}"
 
           # Ensure build script is executable in repo
-          chmod +x ./build_deb_script.sh
+          chmod +x ./build_deb.sh
 
           # Run Debian container (emulated if needed) and call the repository script.
           # Pass EXTERNAL_REPO as environment variable so the script can install it into the venv.
@@ -100,7 +100,7 @@ jobs:
 
               # Run the repository's build script, give it the version argument and EXTERNAL_REPO via env.
               # The script in the repo has been adapted to look for EXTERNAL_REPO env var and install it into the venv.
-              ./build_deb_script.sh '${VERSION}'
+              ./build_deb.sh '${VERSION}'
             "
 
       - name: Upload .deb artifact

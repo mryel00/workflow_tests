@@ -17,14 +17,13 @@ python3 -m venv --system-site-packages "${TMP_VENV}"
 
 "${TMP_VENV}/bin/pip" install --upgrade pip setuptools wheel
 
-echo "Installing requirements into venv"
-"${TMP_VENV}/bin/pip" install --no-cache-dir -r requirements.txt
-
 # If EXTERNAL_REPO is provided in the environment, install it into the venv so it's included in the packaged venv.
 echo "Installing external repository into venv from: ${EXTERNAL_REPO}"
 TMP_EXT="$(mktemp -d /tmp/${PKGNAME}-ext.XXXXXX)"
 git clone --depth=1 -b apt "${EXTERNAL_REPO}" "${TMP_EXT}"
 "${TMP_VENV}/bin/pip" install --no-cache-dir "${TMP_EXT}"
+echo "Installing requirements into venv"
+"${TMP_VENV}/bin/pip" install --no-cache-dir -r "${TMP_EXT}/requirements.txt"
 rm -rf "${TMP_EXT}"
 
 echo "Cleaning up virtualenv to reduce size"

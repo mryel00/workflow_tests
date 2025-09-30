@@ -20,7 +20,7 @@ python3 -m venv --system-site-packages "${TMP_VENV}"
 
 echo "Download external repository whl from : ${EXTERNAL_REPO}"
 # wget $(curl -s https://api.github.com/repos/mryel00/spyglass/releases/latest | grep browser_download_url | cut -d\" -f4  | egrep '.whl$')
-wget "https://docs.google.com/uc?export=download&id=1-DkfAw-FMElFUv-cXV1SrDQZ1_dTyq0f" -O spyglass-0.17.0-py3-none-any.whl
+wget "https://docs.google.com/uc?export=download&id=1CWwL1o2ZIMSYR3djnEgHaWz_D9gKbRY-" -O spyglass-0.17.0-py3-none-any.whl
 echo "Installing whl into venv"
 "${TMP_VENV}/bin/pip" install --no-cache-dir --extra-index-url https://www.piwheels.org/simple *.whl
 

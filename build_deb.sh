@@ -15,16 +15,12 @@ EXTERNAL_REPO="https://github.com/mryel00/spyglass"
 echo "Creating virtualenv in ${TMP_VENV}"
 python3 -m venv --system-site-packages "${TMP_VENV}"
 
-"${TMP_VENV}/bin/pip" install --upgrade pip setuptools wheel
+"${TMP_VENV}/bin/pip" install --upgrade pip
 
-# If EXTERNAL_REPO is provided in the environment, install it into the venv so it's included in the packaged venv.
-echo "Installing external repository into venv from: ${EXTERNAL_REPO}"
-TMP_EXT="$(mktemp -d /tmp/${PKGNAME}-ext.XXXXXX)"
-git clone --depth=1 -b apt "${EXTERNAL_REPO}" "${TMP_EXT}"
-"${TMP_VENV}/bin/pip" install --no-cache-dir "${TMP_EXT}"
-echo "Installing requirements into venv"
-"${TMP_VENV}/bin/pip" install --no-cache-dir -r "${TMP_EXT}/requirements.txt"
-rm -rf "${TMP_EXT}"
+echo "Download external repository whl from : ${EXTERNAL_REPO}"
+wget $(curl -s https://api.github.com/repos/mryel00/spyglass/releases/latest | grep browser_download_url | cut -d\" -f4  | egrep '.whl$') -O external.whl
+echo "Installing whl into venv"
+"${TMP_VENV}/bin/pip" install --no-cache-dir external.whl
 
 echo "Cleaning up virtualenv to reduce size"
 "${TMP_VENV}/bin/pip" cache purge

@@ -24,12 +24,12 @@ jobs:
           - arch: arm64
             platform: linux/arm64
             distro: bookworm
-          - arch: armhf
-            platform: linux/arm/v7
-            distro: bullseye
-          - arch: armhf
-            platform: linux/arm/v7
-            distro: bookworm
+          # - arch: armhf
+          #   platform: linux/arm/v7
+          #   distro: bullseye
+          # - arch: armhf
+          #   platform: linux/arm/v7
+          #   distro: bookworm
 
     env:
       PKGNAME: spyglass

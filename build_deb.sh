@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 # Usage: ./build_deb.sh <version>
 VERSION="${1}"
@@ -59,7 +60,7 @@ if [ -d "${VENV_DIR}/bin" ]; then
 fi
 # ensure any existing shebang scripts under bin are executable (some tools create them)
 if [ -d "${VENV_DIR}/bin" ]; then
-  chmod -R a+rx "${VENV_DIR}/bin" || true
+  chmod -R a+rx "${VENV_DIR}/bin"
 fi
 
 echo "Writing wrapper to ${BIN_DIR}/${PKGNAME}"

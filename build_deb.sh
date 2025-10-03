@@ -2,13 +2,14 @@
 set -euo pipefail
 
 # Usage: ./build_deb.sh <version>
-PKGNAME="spyglass"
+BINNAME="spyglass"
+PKGNAME="mainsail-${BINNAME}"
 
 DEPENDS=(python3-libcamera python3-kms++ python3-picamera2 python3-av)
 
-TMP_VENV="/opt/${PKGNAME}/venv"
-STAGING_DIR="$(mktemp -d /tmp/${PKGNAME}-pkg.XXXXXX)"
-VENV_DIR="${STAGING_DIR}/opt/${PKGNAME}/venv"
+TMP_VENV="/opt/${BINNAME}/venv"
+STAGING_DIR="$(mktemp -d /tmp/${BINNAME}-pkg.XXXXXX)"
+VENV_DIR="${STAGING_DIR}/opt/${BINNAME}/venv"
 BIN_DIR="${STAGING_DIR}/usr/bin"
 EXTERNAL_REPO="https://github.com/mryel00/spyglass"
 
@@ -63,15 +64,15 @@ if [ -d "${VENV_DIR}/bin" ]; then
   chmod -R a+rx "${VENV_DIR}/bin"
 fi
 
-echo "Writing wrapper to ${BIN_DIR}/${PKGNAME}"
-cat > "${BIN_DIR}/${PKGNAME}" <<'EOF'
+echo "Writing wrapper to ${BIN_DIR}/${BINNAME}"
+cat > "${BIN_DIR}/${BINNAME}" <<'EOF'
 #!/usr/bin/env bash
 
 APP_BIN="/opt/spyglass/venv/bin/spyglass"
 
 exec "${APP_BIN}" "$@"
 EOF
-chmod 0755 "${BIN_DIR}/${PKGNAME}"
+chmod 0755 "${BIN_DIR}/${BINNAME}"
 
 FPM_DEPENDS=()
 for dep in "${DEPENDS[@]}"; do

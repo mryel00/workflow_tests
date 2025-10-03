@@ -2,7 +2,6 @@
 set -euo pipefail
 
 # Usage: ./build_deb.sh <version>
-VERSION="${1}"
 PKGNAME="spyglass"
 
 DEPENDS=(python3-libcamera python3-kms++ python3-picamera2 python3-av)
@@ -21,6 +20,8 @@ python3 -m venv --system-site-packages "${TMP_VENV}"
 
 echo "Download external repository whl from : ${EXTERNAL_REPO}"
 wget $(curl -s https://api.github.com/repos/mryel00/spyglass/releases/latest | grep browser_download_url | cut -d\" -f4  | egrep '.whl$')
+WHEEL=$(ls -t *.whl | head -n 1)
+VERSION="$(echo "$WHEEL" | awk -F'-' '{print $2}').${1}"
 echo "Installing whl into venv"
 "${TMP_VENV}/bin/pip" install --no-cache-dir --extra-index-url https://www.piwheels.org/simple *.whl
 

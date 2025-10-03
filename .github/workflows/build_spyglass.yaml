@@ -39,7 +39,6 @@ jobs:
 
     env:
       PKGNAME: spyglass
-      DEFAULT_VERSION: "0.0.0-${{ github.run_number }}"
 
     steps:
       - name: Checkout repository
@@ -57,12 +56,6 @@ jobs:
           DISTRO="${{ matrix.distro }}"
           PLATFORM="${{ matrix.platform }}"
           ARCH="${{ matrix.arch }}"
-
-          # determine version
-          VERSION="${{ github.event.inputs.version }}"
-          if [ -z "${VERSION}" ]; then
-            VERSION="${DEFAULT_VERSION}.${DISTRO}"
-          fi
 
           echo "Packaging ${PKGNAME} version=${VERSION} arch=${ARCH} distro=${DISTRO} platform=${PLATFORM}"
           echo "External repository: ${EXTERNAL_REPO}"
@@ -93,7 +86,7 @@ jobs:
 
               # Run the repository's build script, give it the version argument and EXTERNAL_REPO via env.
               # The script in the repo has been adapted to look for EXTERNAL_REPO env var and install it into the venv.
-              ./build_deb.sh '${VERSION}'
+              ./build_deb.sh '${DISTRO}'
             "
 
       - name: Upload .deb artifact

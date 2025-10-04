@@ -94,5 +94,6 @@ jobs:
           git config --global user.name "Patrick Gehrsitz"
           git config --global user.email "mryel00.github@gmail.com"
           git add *.deb
+          git pull
           git commit -m "Update Spyglass"
           git push

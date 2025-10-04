@@ -89,13 +89,10 @@ jobs:
               ./build_deb.sh '${DISTRO}'
             "
 
-      - name: Upload .deb artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.arch }}-${{ matrix.distro }}-deb
-          path: |
-            *.deb
-
-      - name: List produced files (for debugging)
-        if: always()
-        run: ls -la || true
+      - name: Commit deb file
+        run: |
+          git config --global user.name "Patrick Gehrsitz"
+          git config --global user.email "mryel00.github@gmail.com"
+          git add *.deb
+          git commit -m "Update Spyglass"
+          git push

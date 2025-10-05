@@ -94,3 +94,4 @@ fpm -s dir -t deb \
 echo "Cleaning up"
 rm -rf "${TMP_VENV}" "${STAGING_DIR}"
 echo "Done. .deb is in the current directory."
+ls dist

@@ -68,7 +68,7 @@ jobs:
           echo "External repository: ${EXTERNAL_REPO}"
 
           # Ensure build script is executable in repo
-          chmod +x ./build_deb.sh
+          chmod +x ./scripts/build_deb.sh
 
           # Run Debian container (emulated if needed) and call the repository script.
           # Pass EXTERNAL_REPO as environment variable so the script can install it into the venv.

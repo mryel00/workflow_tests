@@ -39,6 +39,7 @@ jobs:
             platform: linux/arm/v7
             distro: trixie
             continue-on-error: true
+    continue-on-error: ${{ matrix.continue-on-error }}
 
     env:
       PKGNAME: spyglass
@@ -107,6 +108,7 @@ jobs:
           git push
   release:
     name: Create Release
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Download Release Body

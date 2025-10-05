@@ -27,15 +27,18 @@ jobs:
           - arch: arm64
             platform: linux/arm64
             distro: trixie
-          # - arch: armhf
-          #   platform: linux/arm/v7
-          #   distro: bullseye
-          # - arch: armhf
-          #   platform: linux/arm/v7
-          #   distro: bookworm
+          - arch: armhf
+            platform: linux/arm/v7
+            distro: bullseye
+            continue-on-error: true
+          - arch: armhf
+            platform: linux/arm/v7
+            distro: bookworm
+            continue-on-error: true
           - arch: armhf
             platform: linux/arm/v7
             distro: trixie
+            continue-on-error: true
 
     env:
       PKGNAME: spyglass
@@ -89,7 +92,7 @@ jobs:
               ./build_deb.sh '${DISTRO}'
               mv *.deb 'pool/${DISTRO}/rpi'
               cd 'pool/${DISTRO}/rpi'
-            "
+              "
 
       - name: Commit deb file
         run: |
@@ -101,3 +104,22 @@ jobs:
           git pull
           git commit -m "Update Spyglass ${VERSION}"
           git push
+release:
+    name: Create Release
+    needs: push_to_main
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Release Body
+      uses: actions/download-artifact@v4
+      with:
+        name: release-body.md
+        path: .
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        body_path: release_body.md
+        tag_name: ${{ needs.push_to_main.outputs.version }}
+        files: dist/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

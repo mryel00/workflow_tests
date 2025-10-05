@@ -1,11 +1,10 @@
 name: Build .deb (multi-arch Debian using repo script)
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
+  workflow_run:
+    workflows: [""]
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -102,8 +101,8 @@ jobs:
           DEB=$(ls -t *.whl | head -n 1)
           VERSION="$(echo "$DEB" | awk -F'-' '{print $2}')"
           git add *.deb
-          git pull
           git commit -m "Update Spyglass ${VERSION}"
+          git pull
           git push
   release:
     name: Create Release

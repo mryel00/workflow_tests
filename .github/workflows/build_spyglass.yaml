@@ -98,17 +98,17 @@ jobs:
               cd 'pool/${DISTRO}/rpi'
             "
 
-      - name: Commit deb file
-        run: |
-          git config --global user.name "Patrick Gehrsitz"
-          git config --global user.email "mryel00.github@gmail.com"
-          git config pull.rebase true
-          DEB=$(ls -t *.whl | head -n 1)
-          VERSION="$(echo "$DEB" | awk -F'-' '{print $2}')"
-          git add *.deb
-          git commit -m "Update Spyglass ${VERSION}"
-          git pull
-          git push
+      # - name: Commit deb file
+      #   run: |
+      #     git config --global user.name "Patrick Gehrsitz"
+      #     git config --global user.email "mryel00.github@gmail.com"
+      #     git config pull.rebase true
+      #     DEB=$(ls -t *.whl | head -n 1)
+      #     VERSION="$(echo "$DEB" | awk -F'-' '{print $2}')"
+      #     git add *.deb
+      #     git commit -m "Update Spyglass ${VERSION}"
+      #     git pull
+      #     git push
   release:
     name: Create Release
     needs: build

@@ -93,9 +93,7 @@ jobs:
 
               # Run the repository's build script, give it the version argument and EXTERNAL_REPO via env.
               # The script in the repo has been adapted to look for EXTERNAL_REPO env var and install it into the venv.
-              ./build_deb.sh '${DISTRO}'
-              mv *.deb 'pool/${DISTRO}/rpi'
-              cd 'pool/${DISTRO}/rpi'
+              ./scripts/build_deb.sh '${DISTRO}'
             "
 
       # - name: Commit deb file

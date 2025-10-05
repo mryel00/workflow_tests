@@ -88,6 +88,7 @@ fpm -s dir -t deb \
   --url "https://github.com/mryel00/spyglass" \
   --license "GPLv3" \
   "${FPM_DEPENDS[@]}" \
+  -p "dist/" \
   -C "${STAGING_DIR}" .
 
 echo "Cleaning up"

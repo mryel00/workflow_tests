@@ -107,7 +107,7 @@ jobs:
           git push
   release:
     name: Create Release
-    needs: push_to_main
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Download Release Body

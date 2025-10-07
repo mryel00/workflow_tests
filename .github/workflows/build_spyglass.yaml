@@ -2,10 +2,6 @@ name: Build .deb (multi-arch Debian using repo script)
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
 
 permissions:
   contents: write

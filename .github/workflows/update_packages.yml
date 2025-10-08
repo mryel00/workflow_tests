@@ -40,6 +40,7 @@ jobs:
         run: gh release download -R "${{ matrix.repo }}" -p *.deb -D tmp
 
       - name: Upload debs
+        if: steps.get_version.outputs.latest_version != steps.get_version.outputs.local_version
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.pkgname }}

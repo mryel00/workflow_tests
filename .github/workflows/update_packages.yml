@@ -39,7 +39,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release download -R "${{ matrix.repo }}" -p *.deb -D tmp
 
-      - name: Upload wheel
+      - name: Upload debs
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.pkgname }}

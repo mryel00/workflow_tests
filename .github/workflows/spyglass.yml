@@ -1,7 +1,7 @@
 name: Download Latest Spyglass Release
 on:
-  schedule:
-    - cron: '13 */6 * * *'
+  # schedule:
+  #   - cron: '13 */6 * * *'
   workflow_dispatch:
 
 permissions:

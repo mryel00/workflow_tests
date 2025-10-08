@@ -73,7 +73,6 @@ jobs:
           done
 
       - name: Commit and push changes
-        if: steps.get_version.outputs.latest_version != steps.get_version.outputs.local_version
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

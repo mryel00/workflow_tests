@@ -1,4 +1,4 @@
-name: Download Latest Spyglass Release
+name: Download Latest Packages
 on:
   schedule:
     - cron: '13 */6 * * *'

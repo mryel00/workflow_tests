@@ -27,10 +27,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ls ./pool/**
           latest_tag=$(gh release view -R "${{ matrix.repo }}" --json tagName -q .tagName)
           echo "latest_version=${latest_tag#v}" >> $GITHUB_OUTPUT
-          local_tag=$(ls -t ./pool/**/"${{ matrix.pkgname }}"*.deb | head -1 | cut -d '_' -f 2 | sed 's/\.[^.]*$//')
+          local_tag=$(ls -t ./pool/*/*/"${{ matrix.pkgname }}"*.deb | head -1 | cut -d '_' -f 2 | sed 's/\.[^.]*$//')
           echo "local_version=${local_tag}" >> $GITHUB_OUTPUT
 
       - name: Download .deb
@@ -61,7 +60,7 @@ jobs:
 
       - name: Sort packages
         run: |
-          for file in ./tmp/**/*.deb; do
+          for file in ./tmp/*/*.deb; do
             distro=$(echo "${file}" | cut -d '_' -f 2 | rev | cut -d '.' -f -1 | rev)
             variant=$(echo "${file}" | cut -d '_' -f 1 | rev | cut -d '-' -f -1 | rev)
             if [[ "${variant}" != "generic" ]]; then

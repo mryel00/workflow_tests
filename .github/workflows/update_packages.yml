@@ -10,6 +10,8 @@ permissions:
 jobs:
   download-latest:
     runs-on: ubuntu-latest
+    outputs:
+      downloaded: ${{ steps.upload_debs.outcome == 'success' }}
     strategy:
       fail-fast: false
       matrix:
@@ -49,6 +51,7 @@ jobs:
   update-repo:
     runs-on: ubuntu-latest
     needs: download-latest
+    if: needs.download-latest.outputs.downloaded == 'true'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5

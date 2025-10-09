@@ -49,8 +49,7 @@ jobs:
           path: ./tmp/*
 
       - name: Add package to output
-        id: package_downloaded
-        run: echo "${{ matrix.pkgname }}" >> $GITHUB_OUTPUT
+        run: echo "package_downloaded=${{ matrix.pkgname }}" >> $GITHUB_OUTPUT
 
   update-repo:
     runs-on: ubuntu-latest

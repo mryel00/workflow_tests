@@ -49,6 +49,7 @@ jobs:
           path: ./tmp/*
 
       - name: Add package to output
+        if: steps.get_version.outputs.latest_version != steps.get_version.outputs.local_version
         id: package_downloaded
         run: echo "package_downloaded=true" >> $GITHUB_OUTPUT
 
@@ -58,7 +59,7 @@ jobs:
     if: needs.download-latest.outputs.downloaded != ''
     steps:
       - name: Echo GitHub output
-        run: echo ${{ needs.download-latest.outputs.package_downloaded }}
+        run: echo ${{ needs.download-latest.outputs.downloaded }}
 
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -73,6 +74,7 @@ jobs:
           for file in ./tmp/*/*.deb; do
             distro=$(echo "${file}" | cut -d '_' -f 2 | rev | cut -d '.' -f -1 | rev)
             variant=$(echo "${file}" | cut -d '_' -f 1 | rev | cut -d '-' -f -1 | rev)
+            if [[ "${variant}" != "generic" ]]; then
               variant="rpi"
             fi
             path="pool/${distro}/${variant}"

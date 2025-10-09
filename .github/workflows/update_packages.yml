@@ -48,11 +48,18 @@ jobs:
           name: ${{ matrix.pkgname }}
           path: ./tmp/*
 
+      - name: Add package to output
+        id: package_downloaded
+        run: echo "${{ matrix.pkgname }}" >> $GITHUB_OUTPUT
+
   update-repo:
     runs-on: ubuntu-latest
     needs: download-latest
-    if: contains(needs.download-latest.outputs.*.downloaded, 'true')
+    if: needs.download-latest.outputs.package_downloaded != ''
     steps:
+      - name: Echo GitHub output
+        run: echo ${{ needs.download-latest.outputs.package_downloaded }}
+
       - name: Checkout repository
         uses: actions/checkout@v5
 
@@ -66,7 +73,6 @@ jobs:
           for file in ./tmp/*/*.deb; do
             distro=$(echo "${file}" | cut -d '_' -f 2 | rev | cut -d '.' -f -1 | rev)
             variant=$(echo "${file}" | cut -d '_' -f 1 | rev | cut -d '-' -f -1 | rev)
-            if [[ "${variant}" != "generic" ]]; then
               variant="rpi"
             fi
             path="pool/${distro}/${variant}"

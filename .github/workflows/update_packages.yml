@@ -11,7 +11,7 @@ jobs:
   download-latest:
     runs-on: ubuntu-latest
     outputs:
-      downloaded: ${{ steps.upload_debs.outcome == 'success' }}
+      downloaded: ${{ steps.package_downloaded.outputs.packag_downloaded }}
     strategy:
       fail-fast: false
       matrix:
@@ -49,11 +49,13 @@ jobs:
           path: ./tmp/*
 
       - name: Add package to output
-        run: echo "package_downloaded=${{ matrix.pkgname }}" >> $GITHUB_OUTPUT
+        id: package_downloaded
+        run: echo "package_downloaded=true" >> $GITHUB_OUTPUT
 
   update-repo:
     runs-on: ubuntu-latest
     needs: download-latest
+    if: needs.download-latest.outputs.downloaded != ''
     steps:
       - name: Echo GitHub output
         run: echo ${{ needs.download-latest.outputs.package_downloaded }}

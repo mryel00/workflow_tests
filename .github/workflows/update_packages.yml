@@ -11,7 +11,7 @@ jobs:
   download-latest:
     runs-on: ubuntu-latest
     outputs:
-      downloaded: ${{ steps.package_downloaded.outputs.packag_downloaded }}
+      downloaded: ${{ steps.package_downloaded.outputs.package_downloaded }}
     strategy:
       fail-fast: false
       matrix:

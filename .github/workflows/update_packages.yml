@@ -49,7 +49,7 @@ jobs:
           path: ./tmp/*
 
       - name: Add package to output
-        # if: steps.get_version.outputs.latest_version != steps.get_version.outputs.local_version
+        if: steps.get_version.outputs.latest_version != steps.get_version.outputs.local_version
         id: package_downloaded
         run: echo "package_downloaded=${{ matrix.pkgname }}" >> $GITHUB_OUTPUT
 
@@ -71,7 +71,7 @@ jobs:
 
       - name: Sort packages
         run: |
-          ls ./tmp/**/*.deb
+          ls ./tmp/**
           for file in ./tmp/**/*.deb; do
             distro=$(echo "${file}" | cut -d '_' -f 2 | rev | cut -d '.' -f -1 | rev)
             variant=$(echo "${file}" | cut -d '_' -f 1 | rev | cut -d '-' -f -1 | rev)

@@ -79,7 +79,7 @@ jobs:
             if [[ "${package}" == *"ustreamer"* ]]; then
               if [[ "${variant}" == "dbgsym" ]]; then
                 continue
-              elif [["${arch}" == *"arm"* ]]; then
+              elif [[ "${arch}" == *"arm"* ]]; then
                 variant="rpi"
                 path="pool/${distro}/${variant}"
                 mkdir -p "${path}"

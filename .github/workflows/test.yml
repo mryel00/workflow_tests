@@ -2,13 +2,16 @@ name: Test
 
 on:
   workflow_run:
-    workflows: [Release Spyglass]
-    types: [requested]
+    workflows: [Update to Latest Packages]
+    types: [completed]
   workflow_dispatch:
 
 jobs:
   succeed:
     runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     steps:
     - name: Succeed
       run: echo "Succeed"
